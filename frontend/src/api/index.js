@@ -1,8 +1,11 @@
 import axios from "axios";
 // yarn add axios
 // 用axios js 接json api資料 
+// const url =
+//    "https://script.google.com/macros/s/AKfycbzUvJmNkD6ho5dgCKL5gTLE9pcZc8wXhuxsAE5Uy17OxOBSxoZuPDC2tgdcShzRFr1g7w/exec";
+
 const url =
-   "https://script.google.com/macros/s/AKfycbzUvJmNkD6ho5dgCKL5gTLE9pcZc8wXhuxsAE5Uy17OxOBSxoZuPDC2tgdcShzRFr1g7w/exec";
+   "http://localhost:5001/worklist/feed";
 
 export const getWorksList = async () => {
    try {
