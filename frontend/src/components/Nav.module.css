@@ -1,0 +1,151 @@
+.nav {
+  z-index: 10;
+  width: 200px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.nav ul {
+  width: 150px;
+  background-color: #FBFBFB;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 1px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3px 5px 3px 5px;
+
+  border-radius: 57px;
+  border: 1px solid #C3C3C3;
+  position: relative;
+}
+
+.nav li {
+  width: 100%;
+  cursor: pointer;
+  height: max-content;
+  list-style-type: none;
+  z-index: 0;
+}
+
+.nav a {
+  height: 35px;
+  border-radius: 57px;
+  font-family: "Noto Sans TC", "微軟正黑體", sans-serif;
+  font-size: 18px;
+  color: white;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: max-content;
+  grid-gap: 1px;
+  align-items: center;
+  justify-content: center;
+  margin-left: -1px;
+}
+
+.nav .a_active {
+  height: 41px;
+  width: auto;
+  border-radius: 57px;
+  z-index: 0;
+  color: #FFFFFF;
+  background-color: #F2BF8C
+}
+
+.nav .a_active_gray {
+  height: 41px;
+  width: auto;
+  border-radius: 57px;
+  z-index: 0;
+  color: #B5B9B7;
+  background-color: #FBFBFB;
+}
+
+.nav .a_active_green {
+  height: 41px;
+  width: auto;
+  border-radius: 57px;
+  z-index: 0;
+  color: #FFFFFF;
+  background-color: #ACD2BF
+}
+
+.a_active_box_orange {
+  display: block;
+  position: absolute;
+  height: 41px;
+  width: 75px;
+  border-radius: 57px;
+  z-index: 0;
+  background-color: #F2BF8C;
+}
+
+.a_active_box_green {
+  display: block;
+  position: absolute;
+  height: 41px;
+  width: 80px;
+  border-radius: 57px;
+  z-index: 0;
+  background-color: #ACD2BF;
+}
+
+.a_active_box {
+  display: block;
+  position: absolute;
+  height: 41px;
+  width: 80px;
+  border-radius: 57px;
+  z-index: 0;
+
+}
+
+@media screen and (max-width:680px) {
+  .nav {
+    top: 40px;
+    right: 0px;
+  }
+}
+
+@media screen and (max-width:480px) {
+  .nav {
+    top: 50px;
+    right: 20px;
+    width: 160px;
+  }
+
+  .nav ul {
+    width: 130px;
+  }
+
+  .nav a {
+    font-size: 18px;
+    height: 32px !important;
+    ;
+  }
+
+  .a_active_box {
+    height: 32px;
+    width: 61.93px;
+  }
+
+  .a_active_box_orange {
+    height: 32px;
+    width: 61.93px;
+  }
+
+  .a_active_box_green {
+    height: 32px;
+    width: 61.93px;
+  }
+
+  .nav .a_active {
+    height: 32px;
+    width: 61.93px;
+  }
+
+  .nav .a_active_gray {
+    height: 32px;
+    width: 61.93px;
+  }
+}

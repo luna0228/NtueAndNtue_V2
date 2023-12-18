@@ -1,0 +1,48 @@
+# 終端指令：docker compose up
+# popo47112/ntue_and_ntue_v2:0.5
+
+version: '3.12' #指定docker compose的版本
+
+
+services: #這邊宣告所有需要被建立的docker名稱與內容
+
+  # 設置fastapi相關執行參數。 
+  fastapi: #宣告第一個容器的服務名稱
+    container_name: ntue_and_ntue_backend_fastapi
+    build: ./backend/. #設定docker檔案位置在根目錄
+    image: popo47112/ntue_and_ntue_v2:0.5
+    command: python backend/app.py #container要執行的指令
+    ports:
+      - "5001:5001" #應用這行端口指令，取代原本docker run -p 5001:5001 react-vercel-be-practice-v3的用法。
+    volumes: # 用於輔助代碼同步的議題，當本地主機修改文件時，他會反映在容器內部的相應位置
+      - .:/code
+    depends_on: #確保先執行postgre服務
+      - postgre
+    networks:
+      - local-net
+
+  # 設置postgresql相關執行參數。 
+  postgre:
+    container_name: ntue_and_ntue_backend_postgre
+    image: postgres:alpine
+    hostname: postgre #伺服器
+    restart: always
+    tty: true #不清楚用途，但似乎跟調適容器內文件有關
+    environment:
+      POSTGRES_DB: worklist
+      POSTGRES_USER: worklistbe
+      POSTGRES_PASSWORD: givemebe
+    ports:
+      - "5432:5432" 
+    volumes:
+      - postgres_data:/var/lib/postgresql/data #這行是PostgreSQL的標準數據目錄
+    networks:
+      - local-net
+
+# 管理數據目錄，好讓數據存儲持久話，確保容器刪除後，數據依然保存。
+volumes:
+  postgres_data:
+
+# 定義網路，讓不同container在隔離環境下依然相互通信。
+networks:
+  local-net:
