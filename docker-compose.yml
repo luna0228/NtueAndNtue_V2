@@ -1,5 +1,5 @@
 # 終端指令：docker compose up
-# popo47112/ntue_and_ntue_v2:0.5
+# 主要加載的image，有popo47112/ntue_and_ntue_v2_backend以及popo47112/ntue_and_ntue_v2_frontend
 
 version: '3.12' #指定docker compose的版本
 
