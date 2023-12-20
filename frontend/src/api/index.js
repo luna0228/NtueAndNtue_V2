@@ -5,7 +5,7 @@ import axios from "axios";
 //    "https://script.google.com/macros/s/AKfycbzUvJmNkD6ho5dgCKL5gTLE9pcZc8wXhuxsAE5Uy17OxOBSxoZuPDC2tgdcShzRFr1g7w/exec";
 
 const url =
-   "http://localhost:5001/worklist/feed";
+   "http://localhost:5001/worklist";
 
 export const getWorksList = async () => {
    try {
@@ -16,4 +16,15 @@ export const getWorksList = async () => {
       console.log(err);
    }
 
+}
+
+//for WorksList，使用時代入school, semester
+export const getWorksListBySchoolSemester = async (school, semester) => {
+   try {
+      const response = await axios.get(`${url}/${school}/${semester}`);
+      //使用api：http://localhost:5001/worklist/{school}/{semester}
+      return response.data;
+   } catch (err) {
+      console.log(err);
+   }
 }
