@@ -28,3 +28,14 @@ export const getWorksListBySchoolSemester = async (school, semester) => {
       console.log(err);
    }
 }
+
+//for skill search，使用時代入skill_filter
+export const filterWorksListBySkill = async (skill_filter) => {
+   try {
+      const response = await axios.get(`${url}/skill_filter?skill_filter=${skill_filter}`);
+      //使用api：http://localhost:5001/worklist/skill_filter
+      return response.data;
+   } catch (err) {
+      console.log(err);
+   }
+}

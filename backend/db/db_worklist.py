@@ -120,12 +120,12 @@ def get_worklist_by_school(school: str, db: Session):
     return [WorkListResponseSchema.from_orm(item) for item in worklist]
 
 # 優化UX，製作一個先學校後學期的模式；先保留，自創代碼不確定用不用得上
-#def get_worklist_by_school_and_semester(school: str, semester: str, db: Session):
-#    worklist = db.query(DbWorklist).filter(DbWorklist.school == school, DbWorklist.semester == semester).all()
-#    if not worklist:
-#        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
-#                            detail=f'worklist for school {school} and semester {semester} not found')
-#    return [WorkListResponseSchema.from_orm(item) for item in worklist]
+def get_worklist_by_school_and_semester(school: str, semester: str, db: Session):
+   worklist = db.query(DbWorklist).filter(DbWorklist.school == school, DbWorklist.semester == semester).all()
+   if not worklist:
+       raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
+                           detail=f'worklist for school {school} and semester {semester} not found')
+   return [WorkListResponseSchema.from_orm(item) for item in worklist]
 
 
 # 優化資料空值的處理，還有將資料轉換成列表；先保留，老師代碼裡刪掉了

@@ -4,6 +4,10 @@ import { HelmetProvider } from "react-helmet-async";
 import "./bootstrap.min.css";
 import "@popperjs/core";
 import "bootstrap";
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+
 import './App.css'
 
 

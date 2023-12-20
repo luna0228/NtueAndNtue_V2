@@ -164,8 +164,6 @@
    transform: translateX(30%) translateY(30%);
  }
 
-
-
  .homeElf .eye {
    width: 20px;
    height: 26px;
@@ -362,7 +360,91 @@
    background-color: #F4E4D1;
  }
 
+ /*swiper*/
+ .workBanner .swiper-button-next,
+ .workBanner .swiper-button-prev {
+   width: 64px;
+   height: 64px;
+   margin: 0;
+   position: absolute;
+   right: 32px;
+   left: auto;
+   top: 50%;
+   transform: translateY(-50%);
+ }
 
+ .workBanner .swiper-button-next:after,
+ .workBanner .swiper-button-prev:after {
+   content: "";
+   background: url(../src/assets/_swiperBtn.png);
+   width: 64px;
+   height: 64px;
+   background-size: contain;
+   box-shadow: 0 0 5px rgba(0, 0, 0, .1);
+   border-radius: 50%;
+ }
+
+ .workBanner .swiper-button-prev {
+   left: 32px;
+   right: auto;
+ }
+
+ .workBanner .swiper-button-prev:after {
+   transform: rotate(180deg);
+ }
+
+ .workBanner .swiper-button-disabled:after {
+   box-shadow: none;
+ }
+
+ .workBanner .swiper-button-disabled {
+   opacity: .5;
+ }
+
+ .workBanner .swiper-pagination {
+   position: absolute;
+   bottom: 32px;
+ }
+
+ .workBanner .swiper-pagination-bullet {
+   width: 24px;
+   height: 24px;
+   margin: 0 18px !important;
+   background-color: #D9D9D9;
+   opacity: 1;
+ }
+
+ .workBanner .swiper-pagination-bullet.swiper-pagination-bullet-active {
+   background-color: #94D1D1;
+ }
+
+ .workBanner .swiper-slide {
+   background: #fff;
+   border-radius: 20px;
+   overflow: hidden;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 500px;
+ }
+
+ .workBanner {
+   margin: 48px 0 24px;
+   box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+   border-radius: 20px;
+ }
+
+ .workBanner .swiper-slide .imgBox {
+   width: 100%;
+   height: 500px;
+   display: flex;
+   justify-content: center;
+ }
+
+ .workBanner .swiper-slide .imgBox img {
+   object-fit: cover;
+   height: 100%;
+ }
 
  /*works*/
  .worksListBox {
@@ -822,6 +904,20 @@
      height: 200px;
    }
 
+   .workBanner .swiper-slide,
+   .workBanner .swiper-slide .imgBox {
+     height: 420px;
+   }
+
+   .workBanner .swiper-button-next:after,
+   .workBanner .swiper-button-prev:after {
+     width: 48px;
+     height: 48px;
+   }
+
+   .workBanner .swiper-slide .imgBox img {
+     width: 100%;
+   }
  }
 
  @media(max-width:767px) {
@@ -966,6 +1062,25 @@
      padding: 12px;
    }
 
+   .workBanner .swiper-pagination-bullet {
+     width: 20px;
+     height: 20px;
+     margin: 0 12px !important;
+   }
+
+   .workBanner .swiper-pagination {
+     bottom: 20px;
+   }
+
+   .workBanner .swiper-slide,
+   .workBanner .swiper-slide .imgBox {
+     height: 250px;
+   }
+
+   .workBannerOuter {
+     padding: 0 12px;
+     display: block;
+   }
  }
 
  /* 隱藏分頁控件在小屏幕下 */

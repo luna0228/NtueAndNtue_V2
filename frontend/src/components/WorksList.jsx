@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import WorkItem from "./WorkItem";
+import WorkBanner from "./WorkBanner";
 import Pagination from "./Pagination";
 import WorksListJson from "../json/WorksList.json"
 import { getWorksList, getWorksListBySchoolSemester } from "../api";
@@ -61,6 +62,9 @@ export default function WorksList({ school, semester }) {
     return (
         <div className="worksListBox">
             <div className="container">
+                <dic className="workBannerOuter">
+                    <WorkBanner />
+                </dic>
                 <ul className="worksList">
                     {/* 使用 map 函数来渲染 currentWorks 中的每个作品 */}
                     {currentWorks.map((work, index) => (
