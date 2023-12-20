@@ -62,12 +62,10 @@ export default function WorkBanner({ school, semester }) {
             loop={true}
             pagination={{ clickable: true }}
             navigation={{ enabled: false }}
-            // navigation={{ clickable: true }}
-            // autoplay={{
-            //     delay: 4000,
-            //     disableOnInteraction: false,
-            // }}
-
+            autoplay={{
+                delay: 4000,
+                disableOnInteraction: false,
+            }}
             breakpoints={{
                 768: {
                     pagination: { clickable: true },
