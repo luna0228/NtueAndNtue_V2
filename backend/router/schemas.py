@@ -11,6 +11,7 @@ class WorkListRequestSchema(BaseModel):
     websiteUrl: str
     pptUrl: str
     imgUrl: str
+    clkcnt: int
     skill: List[str]
     name: List[str]
     # 補充，原本skill是一個大大的Json，這邊應用套件轉換成字符串列的形式

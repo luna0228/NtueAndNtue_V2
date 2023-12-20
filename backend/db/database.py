@@ -14,9 +14,7 @@ SQLALCHEMY_DATABASE_URL = "postgresql://worklistbe:givemebe@postgre:5432/worklis
 
 
 engine = create_engine(
-    SQLALCHEMY_DATABASE_URL, 
-    # connect_args={"check_same_thread": False}  # 這對於 SQLite 是必要的，特別是在多線程環境中(GPT這樣說)
-)
+    SQLALCHEMY_DATABASE_URL)
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 

@@ -421,7 +421,7 @@ WorkList = [
     "websiteUrl": "",
     "pptUrl": "https://docs.google.com/presentation/d/1IxSvt5PfjpnO9U7TQ_EDldKYVjZ_xkpZ_6rzrt_S8_I/edit?usp=sharing",
     "imgUrl": "https://i.imgur.com/Ppvw6ab.jpeg",
-    "skill": ["JS", "RWD", "jQuery", "WOWAOS"],
+    "skill": ["JS", "RWD", "jQuery", "WOW"],
     "name": ["陳品璇", "李家萱"],
     "school": "ntue",
     "semester": "110-2"
@@ -712,7 +712,7 @@ WorkList = [
     "websiteUrl": "https://scott911228.github.io/gamewiki/",
     "pptUrl": "gamewiki-extended",
     "imgUrl": "https://drive.google.com/file/d/1ls4TF7t6sIkKqwGZ2jYjZ9QY8RskZAi4/view?usp=sharing",
-    "skill": ["html", "css", "jquery", "RWD", "grid", "animate.css", ""],
+    "skill": ["html", "css", "jquery", "RWD", "Grid", "animate.css", ""],
     "name": ["游博翔", "洪呈睿"],
     "school": "ntue",
     "semester": "111-2"
@@ -826,7 +826,7 @@ WorkList = [
       "Bootstrap",
       "RWD",
       "ScrollTrigger.min.js",
-      "gsap.min.js",
+      "GSAP",
       "animate.css",
       "wow.js",
       "html",
@@ -936,7 +936,7 @@ WorkList = [
     "websiteUrl": "https://wxououo.github.io/citypop/index.html",
     "pptUrl": "https://docs.google.com/presentation/d/1kVkMThLXlaUvEbb063sNotECB2aatMgKeklLe0notvI/edit?usp=sharing",
     "imgUrl": "https://i.ytimg.com/vi/mml46rXspXQ/maxresdefault.jpg",
-    "skill": ["JS", "Bootstrap", "RWD", "animated.css"],
+    "skill": ["JS", "Bootstrap", "RWD", "animate.css"],
     "name": ["吳靖宣"],
     "school": "ntue",
     "semester": "111-2"
@@ -1132,7 +1132,7 @@ WorkList = [
     "websiteUrl": "https://ama0099112.github.io/html-css-js/",
     "pptUrl": "https://www.canva.com/design/DAFy5XI9shw/DJGjF-ex26ziaUn3ATeM8Q/edit?utm_content=DAFy5XI9shw&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton",
     "imgUrl": "https://github.com/AMA0099112/html-css-js/blob/main/img/title.PNG",
-    "skill": ["HTML", "CSS", "JJavaScript", "JQuery"],
+    "skill": ["HTML", "CSS", "JavaScript", "JQuery"],
     "name": ["翁靖瑜", "陳怡蒨"],
     "school": "ntue",
     "semester": "112-1"
@@ -1715,7 +1715,7 @@ WorkList = [
     "websiteUrl": "https://hekepoiu.github.io/midtest/index.html",
     "pptUrl": "https://docs.google.com/presentation/d/1pm1AC__JbDo9B3HZAGzlp18yuPo95xpTbtTlqNWQJrQ/edit?usp=sharing",
     "imgUrl": "https://i.imgur.com/FCDw6Gu.png",
-    "skill": ["HTML、CSS、JS、Jquery"],
+    "skill": ["HTML", "CSS", "JS", "Jquery"],
     "name": ["林柏郡", "鄭伃恩", "曹書語"],
     "school": "ntut",
     "semester": "111-1"
@@ -1825,7 +1825,7 @@ WorkList = [
     "websiteUrl": "https://juju9109.github.io/hahaha/",
     "pptUrl": "https://docs.google.com/presentation/d/19jSwbixgDjE9SMtAmxws80M-lblWYB-Z/edit?usp=sharing&ouid=115297772706558657995&rtpof=true&sd=true",
     "imgUrl": "https://imgur.com/oNx8wzv.png",
-    "skill": ["HTML、CSS、JS、Jquery"],
+    "skill": ["HTML", "CSS", "JS", "Jquery"],
     "name": ["李佳怡", "葉思佑", "張愛翎"],
     "school": "ntut",
     "semester": "111-1"
@@ -1902,7 +1902,7 @@ WorkList = [
     "websiteUrl": "https://chengyenn.github.io/Leaf2629/",
     "pptUrl": "https://drive.google.com/file/d/1jRHEXSobW4j1N5kxyCyBMFaaXwvbZEhQ/view?usp=sharing",
     "imgUrl": "https://i.imgur.com/PWR2vfh.png",
-    "skill": ["HTML、CSS、JQuery、JS、Git 版控"],
+    "skill": ["HTML", "CSS", "JQuery", "JS", "Git版控"],
     "name": ["葉呈妍", "葉翔惠"],
     "school": "ntut",
     "semester": "111-1"
@@ -1913,7 +1913,7 @@ WorkList = [
     "websiteUrl": "https://chiaminlin.github.io/coffee/",
     "pptUrl": "https://drive.google.com/file/d/111qCloGjyWE10gO6VkoiUdi4ypubiY0E/view?usp=sharing",
     "imgUrl": "https://i.imgur.com/Kf9Cion.png",
-    "skill": ["HTML、CSS、JQuery、Git"],
+    "skill": ["HTML", "CSS", "JQuery", "Git"],
     "name": ["林均儕", "林家民"],
     "school": "ntut",
     "semester": "111-1"

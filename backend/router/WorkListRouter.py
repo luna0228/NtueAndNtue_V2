@@ -15,13 +15,17 @@ router = APIRouter (
 
 # 設置日誌處理器，使用StreamHandler 而不是 RotatingFileHandler。
 # 主要用途是可以在控制台看到應用程序的日誌輸出，以利於開發者。
-logger = logging.getLogger("myapp") #這行代碼創建名為myapp的日誌處理器
-logger.setLevel(logging.INFO) #這邊只說只有info類型的資料（如ERROR.WAARING）會被處理與紀錄
-stream_handler = logging.StreamHandler() #創建一個流處理器，將日誌訊息輸出到控制台（指終端機或開發者介面）。
-logger.addHandler(stream_handler) #確保所有訊息都會通過此處理器輸出
-
+#logger = logging.getLogger("myapp") #這行代碼創建名為myapp的日誌處理器
+#logger.setLevel(logging.INFO) #這邊只說只有info類型的資料（如ERROR.WAARING）會被處理與紀錄
+#stream_handler = logging.StreamHandler() #創建一個流處理器，將日誌訊息輸出到控制台（指終端機或開發者介面）。
+#logger.addHandler(stream_handler) #確保所有訊息都會通過此處理器輸出
 
 #將上面寫法導入schemas後，做一個編修與更動，以下直接替換
+@router.put('/update/clkcnt/{id}', response_model=WorkListResponseSchema)
+def update_clkcnt(id: int, db: Session = Depends(get_db)):
+    return db_worklist.update_clkcnt(id, db)
+# 點擊數製作
+
 @router.post('', response_model=WorkListResponseSchema)
 def create_work(request: WorkListRequestSchema, db: Session = Depends(get_db)):
     return db_worklist.create(db, request)
@@ -56,7 +60,6 @@ def get_worklist_by_id(id: int = 1, db: Session = Depends(get_db)): #起始默�
     return db_worklist.get_worklist_by_id(id, db)
 # 當端點({prefix}/id)被訪問時，將會調用get...id的指令來檢索資料庫所有的worklist紀錄，如果沒有找到任何一筆，則回傳404。
 
-
 @router.get('/filter', response_model=List[WorkListResponseSchema])
 def get_worklist_by_filter(filter: str = "", db: Session = Depends(get_db)):
     return db_worklist.get_worklist_by_filter(filter, db)
@@ -67,3 +70,5 @@ def get_worklist_by_skill(skill_filter: str = "", db: Session = Depends(get_db))
     return db_worklist.get_worklist_by_filter(skill_filter, db)
 # 1217新增，當端點({prefix}/skill_filter)被訪問時，會技能關鍵字篩選做一個條件判斷。可套入前端ANTD之select樣式。
 # (後續問老師狀況，目前卡JOSNB的議題，versel伺服器運轉不了，但本地搭建的postgresql可以運轉)
+
+

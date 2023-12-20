@@ -17,6 +17,29 @@ def normalize_skills(skills):
     skill_mapping = {
         'js': 'JavaScript',
         'JS': 'JavaScript',
+        'jS': 'JavaScript',
+        'Javascript': 'JavaScript',
+        'javascript': 'JavaScript',
+        'html': 'HTML',
+        'css': 'CSS',
+        'bootstrap':'Boostrap',
+        'bootstraps':'Boostrap',
+        'rwd':'RWD',
+        'Jquery': 'jQuery',
+        'jquery': 'jQuery',
+        'JQuery': 'jQuery',
+        'Git':'Git版控',
+        'git':'Git版控',
+        'github':'Git版控',
+        'firebase':'Firebase',
+        'lottie':'Lottie',
+        'gsap':'GASP',
+        'animate':'animate.css',
+        'wow':'wow.js',
+        'WOW':'wow.js',
+        'slick':'slick.js',
+        'scss':'SCSS',
+        'Scss(Scout-App)':'SCSS(Scout-App)'
         # ... 其他技能映射 ...
     }
     return [skill_mapping.get(skill.lower(), skill) for skill in skills]
@@ -32,18 +55,20 @@ def normalize_skills(skills):
 #         websiteUrl=worklist["websiteUrl"],
 #         pptUrl=worklist["pptUrl"],
 #         imgUrl=worklist["imgUrl"],
+#         clkcnt=0, #新增點擊
 #         skill=worklist["skill"],
 #         name=worklist["name"]
 #     ) for worklist in WorkList]
 #     db.query(DbWorklist).delete()
-#     db.commit()
-#     db.execute(text("ALTER SEQUENCE worklist_id_seq RESTART WITH 1;"))
+#     # db.commit()
+#     # db.execute(text("ALTER SEQUENCE worklist_id_seq RESTART WITH 1;"))
+#     # db.commit()
+#     # db.execute(text("ALTER TABLE worklist ADD COLUMN clkcnt INTEGER DEFAULT 0;"))
 #     db.commit()
 #     db.add_all(new_workList_list)
 #     db.commit()
 #     db_items = db.query(DbWorklist).all()
 #     return [WorkListResponseSchema.from_orm(item) for item in db_items] 
-
 
 # 測試中(後續問老師狀況，目前卡JOSNB的議題，versel伺服器運轉不了，但本地搭建的postgresql可以運轉)
 def db_feed(db: Session):
@@ -59,6 +84,7 @@ def db_feed(db: Session):
             websiteUrl=worklist["websiteUrl"],
             pptUrl=worklist["pptUrl"],
             imgUrl=worklist["imgUrl"],
+            clkcnt=0, #新增點擊
             skill=formatted_skills,  # 使用格式化後的技能
             name=worklist["name"]
         )
@@ -84,7 +110,8 @@ def create(db: Session, request: WorkListRequestSchema):
         websiteUrl=request.websiteUrl,
         pptUrl=request.pptUrl,
         imgUrl=request.imgUrl,
-        # skill=request.skill,
+        # skill=request.skill, #原本的skill模式（未格式化）
+        clkcnt=0,
         skill=formatted_skills,
         name=request.name
     )
@@ -177,7 +204,7 @@ def get_worklist_by_filter(filter: str, db: Session):
 
 # 第二版，根據前端簡化篩選邏輯，引入技能格式化的處理。(後續問老師狀況，目前卡JOSNB的議題，versel伺服器運轉不了，但本地搭建的postgresql可以運轉)
 def get_worklist_by_skill(skill_filter: str, db: Session):
-    jsonb_contains_condition = DbWorklist.skill.contains([formatted_skills])
+    jsonb_contains_condition = DbWorklist.skill.contains([skill_filter])
     stmt = select(DbWorklist).where(jsonb_contains_condition)
     worklist = db.execute(stmt).scalars().all()
     if not worklist:
@@ -186,3 +213,13 @@ def get_worklist_by_skill(skill_filter: str, db: Session):
     # 返回結果
     return [WorkListResponseSchema.from_orm(item) for item in worklist]
 
+# 製作點擊數，會根據id做相對應判斷
+def update_clkcnt(id: int, db: Session):
+    worklist = db.query(DbWorklist).filter(DbWorklist.id == id).first()
+    if not worklist:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
+                            detail=f'Worklist with id = {id} not found')
+    worklist.clkcnt += 1
+    db.commit()
+    db.refresh(worklist)
+    return WorkListResponseSchema.from_orm(worklist)

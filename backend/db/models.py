@@ -15,6 +15,7 @@ class DbWorklist(Base):
     websiteUrl = Column(String)
     pptUrl = Column(String)
     imgUrl = Column(String)
+    clkcnt = Column(Integer)
     # 單表型態下，skill以及name變成一個Jsonb格式
     skill = Column(JSONB)
     name = Column(JSONB)

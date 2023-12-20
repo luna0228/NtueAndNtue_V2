@@ -1,7 +1,5 @@
-backend/__pycache__
-backend/db/__pycache__
-backend/router/__pycache__
-frontend/node_moduels/
+**/__pycache__/
+**/node_moduels/
 *.log
 .eslintcache
 .DS_Store
