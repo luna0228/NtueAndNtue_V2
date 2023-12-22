@@ -9,7 +9,8 @@ from .OneTableWorkList import WorkList
 #引入老師的建議，透過模塊來允許py執行原始SQL語法，拿來重置id
 from sqlalchemy.sql import text
 #引入選取模塊，處理特定名詞或多條件的篩選。select用來創建SQL查詢，or_是創建邏輯「或」
-from sqlalchemy import select, or_
+from sqlalchemy import select, or_, and_
+from typing import List
 
 
 # 1216引入，先處理技能命名格式化的議題
@@ -202,7 +203,7 @@ def get_worklist_by_filter(filter: str, db: Session):
                             detail=f'worklist with filter = {filter} not found')
     return [WorkListResponseSchema.from_orm(item) for item in worklist]
 
-# 第二版，根據前端簡化篩選邏輯，引入技能格式化的處理。(後續問老師狀況，目前卡JOSNB的議題，versel伺服器運轉不了，但本地搭建的postgresql可以運轉)
+# 舊版技能篩選，根據前端簡化篩選邏輯，引入技能格式化的處理。(後續問老師狀況，目前卡JOSNB的議題，versel伺服器運轉不了，但本地搭建的postgresql可以運轉)
 def get_worklist_by_skill(skill_filter: str, db: Session):
     jsonb_contains_condition = DbWorklist.skill.contains([skill_filter])
     stmt = select(DbWorklist).where(jsonb_contains_condition)
@@ -212,6 +213,30 @@ def get_worklist_by_skill(skill_filter: str, db: Session):
                             detail=f'No worklist found with skill = {skill_filter}')
     # 返回結果
     return [WorkListResponseSchema.from_orm(item) for item in worklist]
+
+
+def get_worklist_by_multiple_skills(skill1: str, skill2: str, skill3: str, db: Session):
+    conditions = []
+    if skill1:
+        conditions.append(DbWorklist.skill.contains([skill1]))
+    if skill2:
+        conditions.append(DbWorklist.skill.contains([skill2]))
+    if skill3:
+        conditions.append(DbWorklist.skill.contains([skill3]))
+    # 至少要輸入一個
+    if not conditions:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST,
+                            detail='At least one skill must be provided')
+    combined_condition = and_(*conditions)
+    stmt = select(DbWorklist).where(combined_condition)
+    worklist = db.execute(stmt).scalars().all()
+    # 如果沒有相對應的結果
+    if not worklist:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
+                            detail='No worklist found with the provided skills')
+    return [WorkListResponseSchema.from_orm(item) for item in worklist]
+
+
 
 # 製作點擊數，會根據id做相對應判斷
 def update_clkcnt(id: int, db: Session):
