@@ -78,6 +78,11 @@ export default function WorkBanner({ school, semester }) {
             <SwiperSlide className="workItemSlide">
                 <a href="" title="" target="_blank" className="imgBox">
                     <img src={notFoundImgNtue} onError={add404Img} alt="" />
+                    <div className="bannerText">
+                        <div className="no">01</div>
+                        <div className="workTitle"><h4>gamewiki extend</h4><p className="workAuthors"><span>游博翔</span><span>洪呈睿</span></p></div>
+                    </div>
+
                 </a>
                 {/* <li className="workItem" key={`${WorksListSemester.workName}`}>
             <div className="workItemInner">
@@ -92,7 +97,11 @@ export default function WorkBanner({ school, semester }) {
             </SwiperSlide>
             <SwiperSlide className="workItemSlide">
                 <a href="" title="" target="_blank" className="imgBox">
-                    <img src={notFoundImgNtut} onError={add404Img} alt="" />
+                    <img src="https://images.plurk.com/7qAasgbn6n8lKgeSjCRidO.png" onError={add404Img} alt="" />
+                    <div className="bannerText">
+                        <div className="no">02</div>
+                        <div className="workTitle"><h4>gamewiki extend</h4><p className="workAuthors"><span>游博翔</span><span>洪呈睿</span></p></div>
+                    </div>
                 </a></SwiperSlide>
             <SwiperSlide>Slide 3</SwiperSlide>
             <SwiperSlide>Slide 4</SwiperSlide>

@@ -89,7 +89,7 @@
  }
 
  .text-gray {
-   color: #999;
+   color: #8C8C8C;
  }
 
  /*home*/
@@ -360,92 +360,6 @@
    background-color: #F4E4D1;
  }
 
- /*swiper*/
- .workBanner .swiper-button-next,
- .workBanner .swiper-button-prev {
-   width: 64px;
-   height: 64px;
-   margin: 0;
-   position: absolute;
-   right: 32px;
-   left: auto;
-   top: 50%;
-   transform: translateY(-50%);
- }
-
- .workBanner .swiper-button-next:after,
- .workBanner .swiper-button-prev:after {
-   content: "";
-   background: url(../src/assets/_swiperBtn.png);
-   width: 64px;
-   height: 64px;
-   background-size: contain;
-   box-shadow: 0 0 5px rgba(0, 0, 0, .1);
-   border-radius: 50%;
- }
-
- .workBanner .swiper-button-prev {
-   left: 32px;
-   right: auto;
- }
-
- .workBanner .swiper-button-prev:after {
-   transform: rotate(180deg);
- }
-
- .workBanner .swiper-button-disabled:after {
-   box-shadow: none;
- }
-
- .workBanner .swiper-button-disabled {
-   opacity: .5;
- }
-
- .workBanner .swiper-pagination {
-   position: absolute;
-   bottom: 32px;
- }
-
- .workBanner .swiper-pagination-bullet {
-   width: 24px;
-   height: 24px;
-   margin: 0 18px !important;
-   background-color: #D9D9D9;
-   opacity: 1;
- }
-
- .workBanner .swiper-pagination-bullet.swiper-pagination-bullet-active {
-   background-color: #94D1D1;
- }
-
- .workBanner .swiper-slide {
-   background: #fff;
-   border-radius: 20px;
-   overflow: hidden;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   height: 500px;
- }
-
- .workBanner {
-   margin: 48px 0 24px;
-   box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
-   border-radius: 20px;
- }
-
- .workBanner .swiper-slide .imgBox {
-   width: 100%;
-   height: 500px;
-   display: flex;
-   justify-content: center;
- }
-
- .workBanner .swiper-slide .imgBox img {
-   object-fit: cover;
-   height: 100%;
- }
-
  /*works*/
  .worksListBox {
    padding-bottom: 60px;
@@ -529,6 +443,7 @@
    line-height: 1.5;
    font-weight: 500;
    margin: 0;
+   color: #434343;
  }
 
  .workTitle .workAuthors {
@@ -555,7 +470,7 @@
  .workItem .skillTags {
    margin: 0 -6px;
    padding: 12px 0;
-   height: 80px;
+   height: 92px;
    display: flex;
    flex-wrap: wrap;
    align-items: flex-start;
@@ -568,11 +483,12 @@
 
  .workItem .skillTags li span {
    font-size: .75rem;
-   border: 1px solid #8C8C8C;
-   padding: 0 8px;
-   border-radius: 8px;
+   line-height: 20px;
+   border: 1px solid #BFBFBF;
+   padding: 3px 8px;
+   border-radius: 10px;
    display: inline-block;
-   color: #333;
+   color: #787878;
  }
 
  .workItem .bottomContent {
@@ -600,6 +516,7 @@
 
  .workItem .bottomContent .remark {
    font-size: .75rem;
+   color: #8c8c8c;
  }
 
  .bannerImg {
@@ -608,6 +525,202 @@
 
  .bannerImg img {
    width: 100%;
+ }
+
+ /*luna 1222*/
+
+ .workItem .bottomContent .workLink .viewsBox {
+   border: 1px solid #F5F5F5;
+   border-radius: 16px;
+   padding: 2px 4px;
+   position: relative;
+ }
+
+ .workItem .bottomContent .workLink .viewsBox::after {
+   content: "";
+   width: 12px;
+   height: 12px;
+   position: absolute;
+   top: -4px;
+   right: 0px;
+ }
+
+ .page-ntue .workItem .bottomContent .workLink .viewsBox::after {
+   background: url(../src/assets/ntuePoint.png) no-repeat center center;
+   background-size: 100%;
+ }
+
+ .page-ntut .workItem .bottomContent .workLink .viewsBox::after {
+   background: url(../src/assets/ntutPoint.png) no-repeat center center;
+   background-size: 100%;
+ }
+
+ .workItem .bottomContent .workLink .viewsBox img {
+   margin: 0 4px;
+ }
+
+ .workItem .bottomContent .workLink .viewsBox span {
+   color: #8c8c8c;
+   font-family: 'Acme';
+   font-size: 1rem;
+   margin: 0 4px;
+ }
+
+ .page-ntue .workItem .bottomContent .workLink .viewsBox span.viewsCount {
+   color: #84AB99;
+ }
+
+ .page-ntut .workItem .bottomContent .workLink .viewsBox span.viewsCount {
+   color: #CC996C;
+ }
+
+ /*swiper*/
+ .workBanner .swiper-button-next,
+ .workBanner .swiper-button-prev {
+   width: 64px;
+   height: 64px;
+   margin: 0;
+   position: absolute;
+   right: 32px;
+   left: auto;
+   top: 42%;
+   transform: translateY(-50%);
+   z-index: 100;
+ }
+
+ .workBanner .swiper-button-next:after,
+ .workBanner .swiper-button-prev:after {
+   content: "";
+   background: url(../src/assets/_swiperBtn.png);
+   width: 64px;
+   height: 64px;
+   background-size: contain;
+   box-shadow: 0 0 5px rgba(0, 0, 0, .1);
+   border-radius: 50%;
+ }
+
+ .workBanner .swiper-button-prev {
+   left: 32px;
+   right: auto;
+ }
+
+ .workBanner .swiper-button-prev:after {
+   transform: rotate(180deg);
+ }
+
+ .workBanner .swiper-button-disabled:after {
+   box-shadow: none;
+ }
+
+ .workBanner .swiper-button-disabled {
+   opacity: .5;
+ }
+
+ .workBanner .swiper-pagination {
+   position: absolute;
+   bottom: 32px;
+ }
+
+ .workBanner .swiper-pagination-bullet {
+   width: 24px;
+   height: 24px;
+   margin: 0 18px !important;
+   background-color: #D9D9D9;
+   opacity: 1;
+ }
+
+ .workBanner .swiper-pagination-bullet.swiper-pagination-bullet-active {
+   background-color: #94D1D1;
+ }
+
+ .workBanner .swiper-slide {
+   background: #fff;
+   border-radius: 20px;
+   overflow: hidden;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 500px;
+ }
+
+ .workBannerOuter {
+   padding-bottom: 72px;
+   position: relative;
+   display: block;
+ }
+
+ .workBanner {
+   margin: 48px 0 24px;
+   box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+   border-radius: 20px;
+   position: static;
+ }
+
+
+ .workBanner .swiper-slide .imgBox {
+   width: 100%;
+   height: 500px;
+   display: flex;
+   justify-content: center;
+   position: relative;
+ }
+
+ .workBanner .swiper-slide .imgBox:after {
+   content: "";
+   width: 100%;
+   height: 30%;
+   background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.3) 100%);
+   /* W3C, IE10+, FF16+,*/
+   position: absolute;
+   bottom: 0;
+   left: 0;
+   z-index: 1;
+ }
+
+ .workBanner .swiper-slide .imgBox img {
+   object-fit: cover;
+   height: 100%;
+   width: 100%;
+ }
+
+ .workBanner .bannerText {
+   position: absolute;
+   left: 0;
+   bottom: 0;
+   padding: 24px 32px;
+   display: flex;
+   align-items: center;
+   z-index: 10;
+ }
+
+ .workBanner .bannerText .workTitle {
+   margin-left: 24px;
+ }
+
+ .workBanner .bannerText .workTitle h4 {
+   font-size: 1.5rem;
+   font-weight: 500;
+   color: #fff;
+ }
+
+ .workBanner .bannerText .workTitle .workAuthors {
+   font-size: 1rem;
+   color: #fff;
+ }
+
+ .workBanner .bannerText .no {
+   font-size: 2rem;
+   background: #94D1D1;
+   border-radius: 50%;
+   width: 60px;
+   height: 60px;
+   text-align: center;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   line-height: 1;
+   color: #fff;
+   border: 2px solid #fff;
  }
 
  /*ntut*/
@@ -858,6 +971,10 @@
    .PaginationBox {
      margin: 48px 0px 0px 0px;
    }
+
+   .workItem .bottomContent .workLink .viewsBox span.viewsText {
+     display: none;
+   }
  }
 
  @media(max-width:991px) {
@@ -904,9 +1021,16 @@
      height: 200px;
    }
 
+   /*luna 1222*/
    .workBanner .swiper-slide,
    .workBanner .swiper-slide .imgBox {
      height: 420px;
+   }
+
+   .workBanner .swiper-button-next,
+   .workBanner .swiper-button-prev {
+     width: 48px;
+     height: 48px;
    }
 
    .workBanner .swiper-button-next:after,
@@ -918,6 +1042,7 @@
    .workBanner .swiper-slide .imgBox img {
      width: 100%;
    }
+
  }
 
  @media(max-width:767px) {
@@ -1062,24 +1187,49 @@
      padding: 12px;
    }
 
+   /*luna 1222*/
+
    .workBanner .swiper-pagination-bullet {
      width: 20px;
      height: 20px;
      margin: 0 12px !important;
    }
 
-   .workBanner .swiper-pagination {
-     bottom: 20px;
-   }
 
    .workBanner .swiper-slide,
    .workBanner .swiper-slide .imgBox {
      height: 250px;
    }
 
+   .workBanner .swiper-slide .imgBox:after {
+     height: 35%;
+   }
+
    .workBannerOuter {
-     padding: 0 12px;
+     padding: 0 12px 56px;
      display: block;
+   }
+
+   .workBanner .bannerText {
+     padding: 6px 12px;
+   }
+
+   .workBanner .bannerText .no {
+     font-size: 1.5rem;
+     width: 45px;
+     height: 45px;
+   }
+
+   .workBanner .bannerText .workTitle {
+     margin-left: 12px;
+   }
+
+   .workBanner .bannerText .workTitle h4 {
+     font-size: 1.25rem;
+   }
+
+   .workBanner .bannerText .workTitle .workAuthors {
+     font-size: .875rem;
    }
  }
 
