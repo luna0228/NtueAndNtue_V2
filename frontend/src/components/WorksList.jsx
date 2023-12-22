@@ -62,9 +62,9 @@ export default function WorksList({ school, semester }) {
     return (
         <div className="worksListBox">
             <div className="container">
-                <dic className="workBannerOuter">
+                <div className="workBannerOuter">
                     <WorkBanner />
-                </dic>
+                </div>
                 <ul className="worksList">
                     {/* 使用 map 函数来渲染 currentWorks 中的每个作品 */}
                     {currentWorks.map((work, index) => (

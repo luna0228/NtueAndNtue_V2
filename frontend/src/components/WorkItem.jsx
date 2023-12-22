@@ -3,7 +3,13 @@ import notFoundImgNtut from "../assets/cardimgNtut.png"
 import notFoundImgNtue from "../assets/cardimgNtue.png"
 // import setting from "../assets/Setting.svg"
 import githubIcon from "../assets/githubIcon.svg"
+import githubNtue from "../assets/githubNtue.svg"
+import githubNtut from "../assets/githubNtut.svg"
 import pptIcon from "../assets/pptIcon.svg"
+import pptNtue from "../assets/pptNtue.svg"
+import pptNtut from "../assets/pptNtut.svg"
+import eyeNtue from "../assets/eyeNtue.svg"
+import eyeNtut from "../assets/eyeNtut.svg"
 
 export default function WorkItem({ WorksListSemester, worksName, worksSemester }) {
 
@@ -20,6 +26,46 @@ export default function WorkItem({ WorksListSemester, worksName, worksSemester }
         }
 
     }
+
+    // changeGithubImg
+    const changeGithubImg = () => {
+        let githubImg = ''
+        if (worksName == 'ntut') {
+            githubImg = githubNtut
+        }
+        else if (worksName == 'ntue') {
+            githubImg = githubNtue
+        }
+        else {
+            githubImg = githubIcon
+        }
+        return githubImg
+    }
+
+    const changePptImg = () => {
+        let pptImg = ''
+        if (worksName == 'ntut') {
+            pptImg = pptNtut
+        }
+        else if (worksName == 'ntue') {
+            pptImg = pptNtue
+        }
+        else {
+            pptImg = pptIcon
+        }
+        return pptImg
+    }
+    const changeEyeImg = () => {
+        let eyeImg = ''
+        if (worksName == 'ntut') {
+            eyeImg = eyeNtut
+        }
+        else if (worksName == 'ntue') {
+            eyeImg = eyeNtue
+        }
+        return eyeImg
+    }
+
     // 卡片右下換字 （學期）
     const ChangeWorksSemester = () => {
         if (worksSemester.slice(4, 5) == '2') {
@@ -50,7 +96,7 @@ export default function WorkItem({ WorksListSemester, worksName, worksSemester }
     return (
         <li className="workItem" key={`${WorksListSemester.workName}`}>
             <div className="workItemInner">
-                <a href={WorksListSemester.websiteUrl} title="" target="_blank">
+                <a href={WorksListSemester.websiteUrl} title={WorksListSemester.workName} target="_blank">
                     <div className="imgBox">
                         <img src={WorksListSemester.imgUrl} onError={add404Img} alt={WorksListSemester.imgUrl} />
                     </div>
@@ -77,17 +123,25 @@ export default function WorkItem({ WorksListSemester, worksName, worksSemester }
                     </ul>
                 </div>
                 <div className="bottomContent">
-                    <div className="workLink">
-                        <a href={WorksListSemester.pptUrl} title="PPT" target="_blank">
-                            <img src={pptIcon} alt="PPT"></img>
-                        </a>
-                        <a href={WorksListSemester.githubUrl} title="github" target="_blank">
-                            <img src={githubIcon} alt="github"></img>
-                        </a>
-                    </div>
                     <div className="remark">
                         {ChangeWorksSemester()}・{ChangeworksName()}
                     </div>
+                    <div className="workLink">
+                        <a href={WorksListSemester.websiteUrl} title="views" target="_blank">
+                            <div className="viewsBox">
+                                <img src={changeEyeImg()} alt="views"></img>
+                                <span className="viewsCount">122</span>
+                                <span className="viewsText">views</span>
+                            </div>
+                        </a>
+                        <a href={WorksListSemester.pptUrl} title="PPT" target="_blank">
+                            <img src={changePptImg()} alt="PPT"></img>
+                        </a>
+                        <a href={WorksListSemester.githubUrl} title="github" target="_blank">
+                            <img src={changeGithubImg()} alt="github"></img>
+                        </a>
+                    </div>
+
                 </div>
             </div>
         </li>
