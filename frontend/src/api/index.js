@@ -39,3 +39,13 @@ export const filterWorksListBySkill = async (skill_filter) => {
       console.log(err);
    }
 }
+//filter多選
+export const filterWorksListBySkillmultiple = async (skill1, skill2, skill3) => {
+   try {
+      const response = await axios.get(`${url}/skill1?skill1=${skill1}/skill2?skill2=${skill2}/skill3?skill3=${skill3}`);
+      //使用api：http://localhost:5001/worklist/skill_filter
+      return response.data;
+   } catch (err) {
+      console.log(err);
+   }
+}

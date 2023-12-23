@@ -67,3 +67,8 @@ def get_worklist_by_skill(skill_filter: str = "", db: Session = Depends(get_db))
     return db_worklist.get_worklist_by_filter(skill_filter, db)
 # 1217新增，當端點({prefix}/skill_filter)被訪問時，會技能關鍵字篩選做一個條件判斷。可套入前端ANTD之select樣式。
 # (後續問老師狀況，目前卡JOSNB的議題，versel伺服器運轉不了，但本地搭建的postgresql可以運轉)
+
+@router.get('/multiple_skill_filter', response_model=List[WorkListResponseSchema])
+def get_worklist_by_multiple_skills(skill1: str = None, skill2: str = None, skill3: str = None, db: Session = Depends(get_db)):
+    return db_worklist.get_worklist_by_multiple_skills(skill1, skill2, skill3, db)
+#1222新增，技能篩選，上限為三。搜尋結果是and的邏輯，但使用上輸入不會強迫要輸三次

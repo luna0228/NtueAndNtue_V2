@@ -5,7 +5,7 @@ import WorkItem from "./WorkItem";
 import WorkBanner from "./WorkBanner";
 import Pagination from "./Pagination";
 import WorksListJson from "../json/WorksList.json"
-import { getWorksList, getWorksListBySchoolSemester } from "../api";
+import { getWorksList, getWorksListBySchoolSemester, filterWorksListBySkillmultiple } from "../api";
 
 
 export default function WorksList({ school, semester }) {
