@@ -5,10 +5,11 @@ import Pagination from "./Pagination";
 import WorksListJson from "../json/WorksList.json"
 import { getWorksList, getWorksListBySchoolSemester } from "../api";
 
+
 export default function WorksList({ school, semester }) {
 
     //非同步接資料 from json
-    const [WorksList, setWorksList] = useState(WorksListJson);
+    const [WorksList, setWorksList] = useState(null);
 
     //耕締以下新增
     const [currentPage, setCurrentPage] = useState(1); //新增當前頁碼為1，以及移動頁碼規則
@@ -53,13 +54,14 @@ export default function WorksList({ school, semester }) {
     /* 第二個參數是用來限定當哪些變數被改變時useEffect要觸發 */
 
 
-    // console.log("Current WorksList:", WorksList);
-    // console.log(school + "," + semester);
+    console.log("Current WorksList:", WorksList);
+    console.log(school + "," + semester);
     // console.log("Current Works:", currentWorks);
     // console.log("Total Works:", totalWorks);
     // console.log("Total Pages:", totalPages);
-
+    
     return (
+        WorksList === null || WorksList === undefined || WorksList.length === 0 ? (<div><h1 style={{ backgroundColor:"#BDBDBD" }}>Loading..</h1></div>) : (
         <div className="worksListBox">
             <div className="container">
                 <dic className="workBannerOuter">
@@ -86,6 +88,6 @@ export default function WorksList({ school, semester }) {
                 )}
             </div>
         </div>
-
+)
     )
 }

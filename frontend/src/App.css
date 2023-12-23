@@ -647,11 +647,49 @@
    padding-top: 20px;
  }
 
- .pageBanner .topBar {
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
- }
+ .pageBanner .rightBar {
+  display: flex;
+  justify-content: space-evenly;
+  
+}
+
+ .pageBanner .topBar .select{
+  display: flex;
+  justify-content: space-between;
+  width: 100px;
+  margin-top: 46px;
+  margin-right: 130px;
+}
+.pageBanner .topBar .select .selectmultiple .ant-select-selector{
+  border-color: #BDBDBD;
+}
+
+.page-ntue .pageBanner .topBar .select .selectmultiple:hover .ant-select-selector{
+  border-color: #ACD2BF;
+}
+.page-ntut .pageBanner .topBar .select .selectmultiple:hover .ant-select-selector{
+  border-color: #F2BF8C;
+}
+.page-ntue .pageBanner .topBar .select .selectmultiple:active :hover {
+  border-color: #ACD2BF;
+}
+.page-ntut .pageBanner .topBar .select .selectmultiple:active :hover {
+  border-color: #F2BF8C;
+}
+
+
+.page-ntue .tag{
+  color: #5F8575;
+  background-color: #ACD2BF;
+  border-color: #ACD2BF;
+}
+
+.page-ntut .tag{
+  color: #9c5c1b;
+  background-color: #F2BF8C;
+  border-color: #F2BF8C;
+}
+
 
  .page-ntue .pageBanner .topBar li.breadcrumb-item {
    color: #5F8575;
@@ -702,15 +740,61 @@
    font-size: 14px;
  }
 
- .page-ntut .dropdown a.btn:hover {
-   background-color: transparent;
-   border-color: transparent;
+ /* antd dropdown */
+ .page-ntut .dropdown {
+  margin-top: 46px;
+  margin-right: 25px;
+  color: #F2BF8C;
+  font-size: 14px;
+}
+
+.page-ntue .dropdown {
+  margin-top: 46px;
+  margin-right: 25px;
+  color: #5F8575;
+  font-size: 14px;
+}
+
+
+ .page-ntut .dropdown .dropdownbutton {
+  border-color:#F2BF8C;
+   color: #F2BF8C;
  }
 
- .page-ntue .dropdown a.btn:hover {
+ .page-ntut .dropdown .dropdownbutton:hover {
+  background-color: transparent;
+  border-color: #BDBDBD;
+  color: #F2BF8C;
+}
+
+ .page-ntue .dropdown .dropdownbutton:hover {
    background-color: transparent;
-   border-color: transparent;
+   border-color: #BDBDBD;
+   color: #5F8575;
  }
+ .page-ntue .dropdown .dropdownbutton {
+  border-color:#ACD2BF;
+  color: #5F8575;
+}
+
+.spin{
+  color: #5F8575;
+}
+
+ .pageBanner .container .load-6 .letter {
+  animation-name: loadingF;
+  animation-duration: 1.6s;
+  animation-iteration-count: infinite;
+  animation-direction: linear;
+}
+@keyframes loadingF {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 
  /* 1104修改，強制更動booststrap樣式 */
  .page-ntut .dropdown-menu,

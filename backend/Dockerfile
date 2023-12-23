@@ -1,4 +1,4 @@
-FROM python:3.12.1-slim
+FROM python:3.8.1-slim
 
 # 設置工作目錄
 WORKDIR /code
