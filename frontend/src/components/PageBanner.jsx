@@ -169,18 +169,7 @@ export default function PageBanner({ school, semester }) {
 
 
 
-                <Spin
-                    className="spin"
-                    size="large"
-                    indicator={
-                        <LoadingOutlined
-                            style={{
-                                fontSize: 24,
-                            }}
-                            spin
-                        />
-                    }
-                />
+                
             </div>
 
 

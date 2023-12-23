@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { Spin} from 'antd';
+import { LoadingOutlined } from '@ant-design/icons';
 import WorkItem from "./WorkItem";
 import WorkBanner from "./WorkBanner";
 import Pagination from "./Pagination";
@@ -59,24 +61,38 @@ export default function WorksList({ school, semester }) {
     // console.log("Current Works:", currentWorks);
     // console.log("Total Works:", totalWorks);
     // console.log("Total Pages:", totalPages);
-    
+
     return (
-        WorksList === null || WorksList === undefined || WorksList.length === 0 ? (<div><h1 style={{ backgroundColor:"#BDBDBD" }}>Loading..</h1></div>) : (
+
         <div className="worksListBox">
             <div className="container">
                 <dic className="workBannerOuter">
                     <WorkBanner />
                 </dic>
-                <ul className="worksList">
-                    {/* 使用 map 函数来渲染 currentWorks 中的每个作品 */}
-                    {currentWorks.map((work, index) => (
-                        <WorkItem
-                            key={index}
-                            WorksListSemester={work}
-                            worksName={school}
-                            worksSemester={semester} />
-                    ))}
-                </ul>
+                {WorksList === null || WorksList === undefined || WorksList.length === 0 ? <div><h1 style={{ backgroundColor: "#ACD2BF" }}>Loading..
+                <Spin
+                    className="spin"
+                    size="large"
+                    indicator={
+                        <LoadingOutlined
+                            style={{
+                                fontSize: 24,
+                            }}
+                            spin
+                        />
+                    }
+                /></h1></div> :
+                    <ul className="worksList">
+
+                        {/* 使用 map 函数来渲染 currentWorks 中的每个作品 */}
+                        {currentWorks.map((work, index) => (
+                            <WorkItem
+                                key={index}
+                                WorksListSemester={work}
+                                worksName={school}
+                                worksSemester={semester} />
+                        ))}
+                    </ul>}
                 {/* 使用 Pagination 组件来渲染页码。同時確保給予正確的屬性。並且處裡只有數據情況下顯示分頁組件 */}
                 {totalPages > 1 && ( //&&是且的意思，左邊為真實，後續的渲染才會執行
                     <Pagination
@@ -88,6 +104,6 @@ export default function WorksList({ school, semester }) {
                 )}
             </div>
         </div>
-)
     )
+
 }
