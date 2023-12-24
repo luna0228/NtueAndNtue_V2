@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Spin, Select, Space, Tag, Dropdown, Button } from 'antd';
-import { LoadingOutlined, DownOutlined} from '@ant-design/icons';
+import { LoadingOutlined, DownOutlined } from '@ant-design/icons';
 import WorkItem from "./WorkItem";
 import WorkBanner from "./WorkBanner";
 import Pagination from "./Pagination";
@@ -63,102 +63,100 @@ export default function WorksList({ school, semester }) {
     // console.log("Total Pages:", totalPages);
 
     //定義學期路徑
-const items = [
-    {
-        label: <Link to={`/works/${school}/112-1`}>112期中</Link>,
-        key: '0',
-    },
-    {
-        label: <Link to={`/works/${school}/111-2`}>111期末</Link>,
-        key: '1',
-    },
-    {
-        label: <Link to={`/works/${school}/111-1`}>111期中</Link>,
-        key: '2',
-    },
-    {
-        label: <Link to={`/works/${school}/110-2`}>110期末</Link>,
-        key: '3',
-    },
-    {
-        label: <Link to={`/works/${school}/110-1`}>110期中</Link>,
-        key: '4',
-    },
+    const items = [
+        {
+            label: <Link to={`/works/${school}/112-1`}>112期中</Link>,
+            key: '0',
+        },
+        {
+            label: <Link to={`/works/${school}/111-2`}>111期末</Link>,
+            key: '1',
+        },
+        {
+            label: <Link to={`/works/${school}/111-1`}>111期中</Link>,
+            key: '2',
+        },
+        {
+            label: <Link to={`/works/${school}/110-2`}>110期末</Link>,
+            key: '3',
+        },
+        {
+            label: <Link to={`/works/${school}/110-1`}>110期中</Link>,
+            key: '4',
+        },
 
-];
-//多選TAG
-const options = [
-    {
-        value: 'JavaScript',
-    },
-    {
-        value: 'HTML',
-    },
-    {
-        value: 'CSS',
-    },
-    {
-        value: 'Bootstrap',
-    },
-    {
-        value: 'RWD',
-    }
-    ,
-    {
-        value: 'jQuery',
-    }
-    ,
-    {
-        value: 'Git版控',
-    }
-    ,
-    {
-        value: 'Firebase',
-    }
-    ,
-    {
-        value: 'Lottie',
-    }
-    ,
-    {
-        value: 'GASP',
-    }
-    ,
-    {
-        value: 'animate.css',
-    }
-    ,
-    {
-        value: 'wow.js',
-    }
-    ,
-    {
-        value: 'slick.js',
-    }
-    ,
-    {
-        value: 'SCSS',
-    }
-    ,
-    {
-        value: 'SCSS(Scout-App)',
-    }
-];
+    ];
+    //多選TAG
+    const options = [
+        {
+            value: 'JavaScript',
+        },
+        {
+            value: 'HTML',
+        },
+        {
+            value: 'CSS',
+        },
+        {
+            value: 'Bootstrap',
+        },
+        {
+            value: 'RWD',
+        }
+        ,
+        {
+            value: 'jQuery',
+        }
+        ,
+        {
+            value: 'Git版控',
+        }
+        ,
+        {
+            value: 'Firebase',
+        }
+        ,
+        {
+            value: 'Lottie',
+        }
+        ,
+        {
+            value: 'GASP',
+        }
+        ,
+        {
+            value: 'animate.css',
+        }
+        ,
+        {
+            value: 'wow.js',
+        }
+        ,
+        {
+            value: 'slick.js',
+        }
+        ,
+        {
+            value: 'SCSS',
+        }
+        ,
+        {
+            value: 'SCSS(Scout-App)',
+        }
+    ];
 
-const tagRender = (props) => {
-    const { label, value, closable, onClose } = props;
-    const onPreventMouseDown = (event) => {
-        event.preventDefault();
-        event.stopPropagation();
-    };
-
-    
+    const tagRender = (props) => {
+        const { label, value, closable, onClose } = props;
+        const onPreventMouseDown = (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+        };
         return (
             <Tag
                 className="tag"
                 // color="#ACD2BF"
                 style={{
-                    marginBottom:"1px",
+                    marginBottom: "1px",
                 }}
                 onMouseDown={onPreventMouseDown}
                 closable={closable}
@@ -170,10 +168,56 @@ const tagRender = (props) => {
         );
     };
 
-    
+
+    const [selectedItems, setSelectedItems] = useState([]);
+    const getFilterWorksListData = async (school, semester, skill1, skill2, skill3) => {
+        const response = await filterWorksListBySkillmultiple(school, semester, skill1, skill2, skill3);
+        if (Array.isArray(response)) { //確保接到的資料是陣列
+            setWorksList(response);
+        } else {
+            setWorksList([]);
+        }
+        console.log("Updated FilterWorksList:", response); //用於後台判斷
+    }
+
+
+    const handleSelectChange = (selected) => {
+        console.log(selected) //selected是串列
+        console.log('selected:' + selected[0] + ',' + selected[1] + ',' + selected[2])
+        const skills = selected.slice()
+        console.log('skills:' + skills[0] + ',' + skills[1] + ',' + skills[2])
+        let skill1 = '', skill2 = '', skill3 = ''
+        if (selected.length == 3) {
+            skill1 = skills[0]
+            skill2 = skills[1]
+            skill3 = skills[2]
+            console.log('skills:' + skills[0] + ',' + skills[1] + ',' + skills[2])
+        }
+        else if (selected.length == 2) {
+            skill1 = skills[0]
+            skill2 = skills[1]
+            skill3 = null
+            console.log('selected:' + skill1 + ',' + skill2 + ',' + skill3)
+        }
+        else if (selected.length == 1) {
+            skill1 = skills[0]
+            skill2 = null
+            skill3 = null
+            console.log('selected:' + skill1 + ',' + skill2 + ',' + skill3)
+        }
+        else {
+            console.log('selected:' + skill1 + ',' + skill2 + ',' + skill3)
+        }
+
+        getFilterWorksListData(school, semester, skill1, skill2, skill3)
+        setSelectedItems(selected);
+    };
+
+    console.log(selectedItems.length)
+
     return (
 
-        
+
         <div className="worksListBox">
             <div className="container">
                 <div className="workBannerOuter">
@@ -195,63 +239,66 @@ const tagRender = (props) => {
                             semester={semester} />
                     }
                 </div>
-                    
+
                 <div className="rightBar">
-                <div className="dropdown">
-                                <Dropdown
-                                    menu={{ items }}
-                                    trigger={['click']}
-                                >
-                                    <Button className="dropdownbutton"
-                                        onClick={(e) => e.preventDefault()}>
-                                        <Space className="text">
-                                            分類
-                                            <DownOutlined />
-                                        </Space>
-                                    </Button>
-                                </Dropdown>
-                                </div>
-
-                                <div className="select">
-                                <Space
-                                    className="space"
-                                    style={{
-                                        width: "250px",
-                                    }}
-                                    direction="vertical"
-                                >
-                                    <Select
-                                        className="selectmultiple"
-                                        mode="multiple"
-                                        listHeight={130}
-                                        // value={selectedItems}
-                                        // onChange={handleSelectChange}
-                                        allowClear
-                                        tagRender={tagRender}
-                                        // defaultValue={['gold', 'cyan']}
-                                        style={{
-                                            width: "350px",
-                                            
-                                        }}
-
-                                        options={options}
-
-                                    />
+                    <div className="dropdown">
+                        <Dropdown
+                            menu={{ items }}
+                            trigger={['click']}
+                        >
+                            <Button className="dropdownbutton"
+                                onClick={(e) => e.preventDefault()}>
+                                <Space className="text">
+                                    分類
+                                    <DownOutlined />
                                 </Space>
-                            </div>
+                            </Button>
+                        </Dropdown>
                     </div>
-                    
-                    <ul className="worksList">
 
-                        {/* 使用 map 函数来渲染 currentWorks 中的每个作品 */}
-                        {currentWorks.map((work, index) => (
-                            <WorkItem
-                                key={index}
-                                WorksListSemester={work}
-                                worksName={school}
-                                worksSemester={semester} />
-                        ))}
-                    </ul>
+                    <div className="select">
+                        <Space
+                            className="space"
+                            style={{
+                                width: "250px",
+                            }}
+                            direction="vertical"
+                        >
+                            <Select
+                                className="selectmultiple"
+                                mode="multiple"
+                                listHeight={130}
+                                // value={selectedItems}
+                                onChange={handleSelectChange}
+                                allowClear
+                                tagRender={tagRender}
+                                // defaultValue={['gold', 'cyan']}
+                                style={{
+                                    width: "350px",
+                                }}
+                                disabled={
+                                    selectedItems.length >= 3
+                                        ? true
+                                        : false
+                                }
+                                options={options}
+
+                            />
+                        </Space>
+                    </div>
+                </div>
+
+                <ul className="worksList">
+
+                    {/* 使用 map 函数来渲染 currentWorks 中的每个作品 */}
+                    {currentWorks.map((work, index) => (
+                        <WorkItem
+                            key={index}
+                            WorksListSemester={work}
+                            worksName={school}
+                            worksSemester={semester} />
+                    ))}
+                </ul>
                 {/* 使用 Pagination 组件来渲染页码。同時確保給予正確的屬性。並且處裡只有數據情況下顯示分頁組件 */}
                 {totalPages > 1 && ( //&&是且的意思，左邊為真實，後續的渲染才會執行
                     <Pagination

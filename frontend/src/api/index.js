@@ -29,31 +29,23 @@ export const getWorksListBySchoolSemester = async (school, semester) => {
    }
 }
 
-//for skill search，使用時代入skill_filter
-export const filterWorksListBySkill = async (skill_filter) => {
-   try {
-      const response = await axios.get(`${url}/skill_filter?skill_filter=${skill_filter}`);
-      //使用api：http://localhost:5001/worklist/skill_filter
-      return response.data;
-   } catch (err) {
-      console.log(err);
-   }
-}
-//filter多選
-export const filterWorksListBySkillmultiple = async (skill1, skill2, skill3) => {
-   try {
-      const response = await axios.get(`${url}/skill1?skill1=${skill1}/skill2?skill2=${skill2}/skill3?skill3=${skill3}`);
-      //使用api：http://localhost:5001/worklist/skill_filter
-      return response.data;
-   } catch (err) {
-      console.log(err);
-   }
-}
 
 // GPT建議使用"&"來製作獨立
-export const filterWorksListBySkillmultiple_part2 = async (skill1, skill2, skill3) => {
+export const filterWorksListBySkillmultiple = async (school, semester, skill1, skill2, skill3) => {
    try {
-      const response = await axios.get(`${url}/multiple_skill_filter?skill1=${skill1}&skill2=${skill2}&skill3=${skill3}`);
+
+      let response
+      if (skill1 != null & skill2 != null & skill3 != null) {
+         response = await axios.get(`${url}/${school}/${semester}/multiple_skill_filter?skill1=${skill1}&skill2=${skill2}&skill3=${skill3}`);
+      }
+      else if (skill1 != null & skill2 != null & skill3 == null) {
+         response = await axios.get(`${url}/${school}/${semester}/multiple_skill_filter?skill1=${skill1}&skill2=${skill2}`);
+      }
+      else if (skill1 != null & skill2 == null & skill3 == null) {
+         response = await axios.get(`${url}/${school}/${semester}/multiple_skill_filter?skill1=${skill1}`);
+      }
+      // let response = await axios.get(`${url}/${school}/${semester}/multiple_skill_filter?skill1=${skill1}&skill2=${skill2}&skill3=${skill3}`);
+
       return response.data;
    } catch (err) {
       console.log(err);
