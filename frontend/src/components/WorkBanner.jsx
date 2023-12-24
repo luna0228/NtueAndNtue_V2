@@ -48,7 +48,7 @@ export default function WorkBanner({ worksList, school, semester }) {
         >
             {/* sort依照變數排序(clkcnt) slice只取前5個 */}
             {worksList.sort((a, b) => b.clkcnt - a.clkcnt).slice(0, 5).map((work, index) => (
-                <SwiperSlide className="workItemSlide">
+                <SwiperSlide className="workItemSlide" key={index}>
                     <a href={work.websiteUrl} title={work.workName} target="_blank" className="imgBox">
                         <img src={work.imgUrl} onError={add404Img} alt={work.workName} />
                         <div className="bannerText">

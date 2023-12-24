@@ -10,7 +10,7 @@ import { getWorksList, getWorksListBySchoolSemester, filterWorksListBySkillmulti
 export default function WorksList({ school, semester }) {
 
     //非同步接資料 from json
-    const [WorksList, setWorksList] = useState(WorksListJson);
+    const [WorksList, setWorksList] = useState(null);
 
     //耕締以下新增
     const [currentPage, setCurrentPage] = useState(1); //新增當前頁碼為1，以及移動頁碼規則
@@ -66,8 +66,23 @@ export default function WorksList({ school, semester }) {
         <div className="worksListBox">
             <div className="container">
                 <div className="workBannerOuter">
-                    <WorkBanner worksList={WorksList} school={school}
-                        semester={semester} />
+                    {WorksList === null || WorksList === undefined || WorksList.length === 0 ?
+                        <div><h1 style={{ backgroundColor: "#ACD2BF" }}>Loading..<Spin
+                            className="spin"
+                            size="large"
+                            indicator={
+                                <LoadingOutlined
+                                    style={{
+                                        fontSize: 24,
+                                    }}
+                                    spin
+                                />
+                            }
+                        /></h1></div>
+                        :
+                        <WorkBanner worksList={WorksList} school={school}
+                            semester={semester} />
+                    }
                 </div>
                 {WorksList === null || WorksList === undefined || WorksList.length === 0 ? <div><h1 style={{ backgroundColor: "#ACD2BF" }}>Loading..
                     <Spin
