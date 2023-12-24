@@ -1,5 +1,5 @@
 # 1203新增 用來宣告如何讀寫表格資料的文件
-from fastapi import HTTPException, status
+from fastapi import HTTPException, status, Depends
 import ast
 from router.schemas import WorkListResponseSchema, WorkListRequestSchema
 #Session是ORM映射的關鍵。透過它我們才有機會繞過SQL語法，應用python指令做數據的調閱、修改、刪除。
@@ -10,7 +10,8 @@ from .OneTableWorkList import WorkList
 from sqlalchemy.sql import text
 #引入選取模塊，處理特定名詞或多條件的篩選。select用來創建SQL查詢，or_是創建邏輯「或」
 from sqlalchemy import select, or_, and_
-from typing import List
+from typing import List, Optional
+from db.database import get_db
 
 
 # 1216引入，先處理技能命名格式化的議題
@@ -215,13 +216,13 @@ def get_worklist_by_skill(skill_filter: str, db: Session):
     return [WorkListResponseSchema.from_orm(item) for item in worklist]
 
 
-def get_worklist_by_multiple_skills(skill1: str, skill2: str, skill3: str, db: Session):
+def get_worklist_by_multiple_skills(skill1: Optional[str] = None, skill2: Optional[str] = None, skill3: Optional[str] = None,db: Session=Depends(get_db)):
     conditions = []
-    if skill1:
+    if skill1 is not None:
         conditions.append(DbWorklist.skill.contains([skill1]))
-    if skill2:
+    if skill2 is not None:
         conditions.append(DbWorklist.skill.contains([skill2]))
-    if skill3:
+    if skill3 is not None:
         conditions.append(DbWorklist.skill.contains([skill3]))
     # 至少要輸入一個
     if not conditions:
@@ -237,7 +238,6 @@ def get_worklist_by_multiple_skills(skill1: str, skill2: str, skill3: str, db: S
     return [WorkListResponseSchema.from_orm(item) for item in worklist]
 
 
-
 # 製作點擊數，會根據id做相對應判斷
 def update_clkcnt(id: int, db: Session):
     worklist = db.query(DbWorklist).filter(DbWorklist.id == id).first()
@@ -248,3 +248,5 @@ def update_clkcnt(id: int, db: Session):
     db.commit()
     db.refresh(worklist)
     return WorkListResponseSchema.from_orm(worklist)
+
+
