@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 // import Swiper core and required modules
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 // Import Swiper React components
@@ -9,7 +8,7 @@ import notFoundImg from "../assets/404.png"
 import notFoundImgNtut from "../assets/cardimgNtut.png"
 import notFoundImgNtue from "../assets/cardimgNtue.png"
 
-export default function WorkBanner({ school, semester }) {
+export default function WorkBanner({ worksList, school, semester }) {
 
     // 圖片Error
     const add404Img = (ev) => {
@@ -22,37 +21,9 @@ export default function WorkBanner({ school, semester }) {
         else {
             ev.target.src = notFoundImg
         }
+    }
 
-    }
-    // 圖片banner
-
-    const pageBannerPC = (ev) => {
-        let BannerPC
-        if (school == 'ntut') {
-            BannerPC = bannerNtut
-        }
-        else if (school == 'ntue') {
-            BannerPC = bannerNtue
-        }
-        else {
-            BannerPC = ''
-        }
-        return BannerPC
-    }
-    // 圖片banner
-    const pageBannerMB = (ev) => {
-        let BannerMB
-        if (school == 'ntut') {
-            BannerMB = bannerNtutSm
-        }
-        else if (school == 'ntue') {
-            BannerMB = bannerNtueSm
-        }
-        else {
-            BannerMB = ''
-        }
-        return BannerMB
-    }
+    //console.log(worksList)
 
     return (
         <Swiper
@@ -75,7 +46,29 @@ export default function WorkBanner({ school, semester }) {
 
             modules={[Navigation, Pagination]}
         >
-            <SwiperSlide className="workItemSlide">
+            {/* sort依照變數排序(clkcnt) slice只取前5個 */}
+            {worksList.sort((a, b) => b.clkcnt - a.clkcnt).slice(0, 5).map((work, index) => (
+                <SwiperSlide className="workItemSlide">
+                    <a href={work.websiteUrl} title={work.workName} target="_blank" className="imgBox">
+                        <img src={work.imgUrl} onError={add404Img} alt={work.workName} />
+                        <div className="bannerText">
+                            <div className="no">0{index + 1}</div>
+                            <div className="workTitle"><h4>{work.workName}</h4>
+                                <p className="workAuthors">
+                                    {work.name.map((workAuthor, index) => {
+                                        return (
+                                            <span key={index}>{workAuthor}</span>
+                                        );
+                                    })}
+                                    {/* <span>游博翔</span><span>洪呈睿</span> */}
+                                </p></div>
+                        </div>
+
+                    </a>
+                </SwiperSlide>
+            ))}
+
+            {/* <SwiperSlide className="workItemSlide">
                 <a href="" title="" target="_blank" className="imgBox">
                     <img src={notFoundImgNtue} onError={add404Img} alt="" />
                     <div className="bannerText">
@@ -84,16 +77,6 @@ export default function WorkBanner({ school, semester }) {
                     </div>
 
                 </a>
-                {/* <li className="workItem" key={`${WorksListSemester.workName}`}>
-            <div className="workItemInner">
-                <a href={WorksListSemester.websiteUrl} title="" target="_blank">
-                    <div className="imgBox">
-                        <img src={WorksListSemester.imgUrl} onError={add404Img} alt={WorksListSemester.imgUrl} />
-                    </div>
-                </a>
-            </div>
-        </li> */}
-
             </SwiperSlide>
             <SwiperSlide className="workItemSlide">
                 <a href="" title="" target="_blank" className="imgBox">
@@ -104,7 +87,7 @@ export default function WorkBanner({ school, semester }) {
                     </div>
                 </a></SwiperSlide>
             <SwiperSlide>Slide 3</SwiperSlide>
-            <SwiperSlide>Slide 4</SwiperSlide>
+            <SwiperSlide>Slide 4</SwiperSlide> */}
         </Swiper>
     )
 }

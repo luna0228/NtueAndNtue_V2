@@ -3,7 +3,7 @@ import WorkItem from "./WorkItem";
 import WorkBanner from "./WorkBanner";
 import Pagination from "./Pagination";
 import WorksListJson from "../json/WorksList.json"
-import { getWorksList, getWorksListBySchoolSemester } from "../api";
+import { getWorksList, getWorksListBySchoolSemester, updateClkCnt } from "../api";
 
 export default function WorksList({ school, semester }) {
 
@@ -18,8 +18,8 @@ export default function WorksList({ school, semester }) {
     //WorksList會直接接到 指定學校(school)、學期(semester)的資料，所以寫法改變
     const totalWorks = semesterData.length; //宣告要處理的總卡片數值等同於學期卡片數的數量
     const totalPages = Math.ceil(totalWorks / itemsPerPage); //運算所需要的頁數
-    // 定義頁數的切片
-    const currentWorks = semesterData.slice(
+    // 定義頁數的切片 //sort 依照變數排序(clkcnt)
+    const currentWorks = semesterData.sort((a, b) => b.clkcnt - a.clkcnt).slice(
         (currentPage - 1) * itemsPerPage,
         currentPage * itemsPerPage
     );
@@ -63,7 +63,8 @@ export default function WorksList({ school, semester }) {
         <div className="worksListBox">
             <div className="container">
                 <div className="workBannerOuter">
-                    <WorkBanner />
+                    <WorkBanner worksList={WorksList} school={school}
+                        semester={semester} />
                 </div>
                 <ul className="worksList">
                     {/* 使用 map 函数来渲染 currentWorks 中的每个作品 */}

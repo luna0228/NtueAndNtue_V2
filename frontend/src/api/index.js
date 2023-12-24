@@ -39,3 +39,13 @@ export const filterWorksListBySkill = async (skill_filter) => {
       console.log(err);
    }
 }
+
+//for 點擊數
+export const updateClkCnt = async (id) => {
+   try {
+      const response = await axios.put(`${url}/update/clkcnt/${id}`);
+      return response.data;
+   } catch (err) {
+      console.log(err);
+   }
+}
