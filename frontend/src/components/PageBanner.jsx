@@ -175,6 +175,7 @@ const [selectedItems, setSelectedItems] = useState([]);
       return;
     }
 
+    
     setSelectedItems(selected);
   };
         return (
@@ -218,12 +219,12 @@ const [selectedItems, setSelectedItems] = useState([]);
                                         mode="multiple"
                                         listHeight={130}
                                         // value={selectedItems}
-                                        onChange={handleSelectChange}
+                                        // onChange={handleSelectChange}
                                         allowClear
                                         tagRender={tagRender}
                                         // defaultValue={['gold', 'cyan']}
                                         style={{
-                                            width: "230px",
+                                            width: "350px",
                                             
                                         }}
 
