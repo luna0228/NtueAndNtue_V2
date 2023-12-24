@@ -50,6 +50,16 @@ export const filterWorksListBySkillmultiple = async (skill1, skill2, skill3) => 
    }
 }
 
+// GPT建議使用"&"來製作獨立
+export const filterWorksListBySkillmultiple_part2 = async (skill1, skill2, skill3) => {
+   try {
+      const response = await axios.get(`${url}/multiple_skill_filter?skill1=${skill1}&skill2=${skill2}&skill3=${skill3}`);
+      return response.data;
+   } catch (err) {
+      console.log(err);
+   }
+}
+
 //for 點擊數
 export const updateClkCnt = async (id) => {
    try {

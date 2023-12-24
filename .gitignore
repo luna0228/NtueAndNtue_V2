@@ -1,5 +1,5 @@
 **/__pycache__/
-**/node_moduels/
+**/node_modules/
 *.log
 .eslintcache
 .DS_Store

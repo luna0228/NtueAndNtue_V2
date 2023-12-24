@@ -5,7 +5,7 @@ from sqlalchemy.orm import Session
 from db.database import get_db
 from db import db_worklist
 from router.schemas import WorkListResponseSchema,WorkListRequestSchema
-from typing import List
+from typing import List, Optional
 import logging
 
 router = APIRouter (
@@ -72,6 +72,6 @@ def get_worklist_by_skill(skill_filter: str = "", db: Session = Depends(get_db))
 # (後續問老師狀況，目前卡JOSNB的議題，versel伺服器運轉不了，但本地搭建的postgresql可以運轉)
 
 @router.get('/multiple_skill_filter', response_model=List[WorkListResponseSchema])
-def get_worklist_by_multiple_skills(skill1: str = None, skill2: str = None, skill3: str = None, db: Session = Depends(get_db)):
+def get_worklist_by_multiple_skills(skill1: Optional[str] = None, skill2: Optional[str] = None, skill3: Optional[str] = None, db: Session = Depends(get_db)):
     return db_worklist.get_worklist_by_multiple_skills(skill1, skill2, skill3, db)
 #1222新增，技能篩選，上限為三。搜尋結果是and的邏輯，但使用上輸入不會強迫要輸三次
