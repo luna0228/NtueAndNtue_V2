@@ -216,18 +216,20 @@ def get_worklist_by_skill(skill_filter: str, db: Session):
     return [WorkListResponseSchema.from_orm(item) for item in worklist]
 
 
-def get_worklist_by_multiple_skills(skill1: Optional[str] = None, skill2: Optional[str] = None, skill3: Optional[str] = None,db: Session=Depends(get_db)):
-    conditions = []
+def get_worklist_by_multiple_skills(school: str, semester: str, skill1: Optional[str] = None, skill2: Optional[str] = None, skill3: Optional[str] = None,db: Session=Depends(get_db)):
+    conditions = [DbWorklist.school == school, DbWorklist.semester == semester]
+    skill_conditions = []
     if skill1 is not None:
-        conditions.append(DbWorklist.skill.contains([skill1]))
+        skill_conditions.append(DbWorklist.skill.contains([skill1]))
     if skill2 is not None:
-        conditions.append(DbWorklist.skill.contains([skill2]))
+        skill_conditions.append(DbWorklist.skill.contains([skill2]))
     if skill3 is not None:
-        conditions.append(DbWorklist.skill.contains([skill3]))
+        skill_conditions.append(DbWorklist.skill.contains([skill3]))
     # 至少要輸入一個
-    if not conditions:
+    if not skill_conditions:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST,
                             detail='At least one skill must be provided')
+    conditions.extend(skill_conditions)
     combined_condition = and_(*conditions)
     stmt = select(DbWorklist).where(combined_condition)
     worklist = db.execute(stmt).scalars().all()
