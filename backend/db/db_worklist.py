@@ -26,10 +26,11 @@ def normalize_skills(skills):
         '(沒有使用bookstrap) html': 'HTML',
         'css': 'CSS',
         'REACT': 'React',
-        'bootstrap':'Boostrap',
-        'bootstraps':'Boostrap',
-        'bootstraps5':'Boostrap',
-        'Bootstrap4':'Boostrap',
+        'bootstrap':'Bootstrap',
+        'bootstraps':'Bootstrap',
+        'bootstraps5':'Bootstrap',
+        'Booststrap':'Bootstrap',
+        'Bootstrap4':'Bootstrap',
         'Typescript':'Typescript',
         'rwd':'RWD',
         'Jquery': 'jQuery',
@@ -58,7 +59,7 @@ def normalize_skills(skills):
         
         # ... 其他技能映射 ...
     }
-    return [skill_mapping.get(skill.lower(), skill) for skill in skills]
+    return [skill_mapping.get(skill.lower(), skill) for skill in skills if skill]
 
 
 # feed的功能是把Dbworklist清空重來，然後檢索Dbworlist後套入schemas做轉換與響應

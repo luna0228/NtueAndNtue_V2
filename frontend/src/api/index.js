@@ -30,10 +30,9 @@ export const getWorksListBySchoolSemester = async (school, semester) => {
 }
 
 
-// GPT建議使用"&"來製作獨立
+//for 技能篩選
 export const filterWorksListBySkillmultiple = async (school, semester, skill1, skill2, skill3) => {
    try {
-
       let response
       if (skill1 != null & skill2 != null & skill3 != null) {
          response = await axios.get(`${url}/${school}/${semester}/multiple_skill_filter?skill1=${skill1}&skill2=${skill2}&skill3=${skill3}`);
@@ -51,6 +50,18 @@ export const filterWorksListBySkillmultiple = async (school, semester, skill1, s
       console.log(err);
    }
 }
+
+//如果API有更動演算策略，將上面handleSelectChange更簡約的GPT奇妙寫法
+// export const filterWorksListBySkillmultiple = async (school, semester, skills) => {
+//    try {
+//        let query = skills.filter(skill => skill != null).map((skill, index) => `skill${index + 1}=${skill}`).join('&');
+//        let response = await axios.get(`${url}/${school}/${semester}/multiple_skill_filter?${query}`);
+//        return response.data;
+//    } catch (err) {
+//        console.log(err);
+//    }
+// }
+
 
 //for 點擊數
 export const updateClkCnt = async (id) => {

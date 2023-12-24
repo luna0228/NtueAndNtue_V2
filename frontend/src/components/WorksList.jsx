@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Spin, Select, Space, Tag, Dropdown, Button } from 'antd';
+import { Spin, Select, Space, Tag, Dropdown, Button, message } from 'antd';
 import { LoadingOutlined, DownOutlined } from '@ant-design/icons';
 import WorkItem from "./WorkItem";
 import WorkBanner from "./WorkBanner";
@@ -26,6 +26,7 @@ export default function WorksList({ school, semester }) {
         (currentPage - 1) * itemsPerPage,
         currentPage * itemsPerPage
     );
+    const [selectedItems, setSelectedItems] = useState([]);
 
     // 使用 useEffect 鉤子來監聽瀏覽器窗口的大小變化，因為要判斷576px視窗時把更動每頁顯示的卡片數。如果寬度變化時自動更新windowWith的數字
     useEffect(() => {
@@ -145,7 +146,8 @@ export default function WorksList({ school, semester }) {
     };
 
 
-    const [selectedItems, setSelectedItems] = useState([]);
+
+
     const getFilterWorksListData = async (school, semester, skill1, skill2, skill3) => {
         const response = await filterWorksListBySkillmultiple(school, semester, skill1, skill2, skill3);
         if (Array.isArray(response)) { //確保接到的資料是陣列
@@ -156,8 +158,10 @@ export default function WorksList({ school, semester }) {
         console.log("Updated FilterWorksList:", response); //用於後台判斷
     }
 
-
     const handleSelectChange = (selected) => {
+        if (selected.length > 3) {
+            message.warning("系統只會篩選前三個選項",2.5);
+        }
         console.log(selected) //selected是串列
         console.log('selected:' + selected[0] + ',' + selected[1] + ',' + selected[2])
         const skills = selected.slice()
@@ -187,9 +191,18 @@ export default function WorksList({ school, semester }) {
 
         getFilterWorksListData(school, semester, skill1, skill2, skill3)
         setSelectedItems(selected);
-    };
+    };        
 
-    console.log(selectedItems.length)
+    //如果API有更動演算策略，將上面handleSelectChange更簡約的GPT奇妙寫法
+    // const handleSelectChange = (selected) => {
+    //     if (selected.length > 3) {
+    //         message.warning("系統只會篩選前三個選項",2.5);
+    //     }
+    //     console.log('Selected skills:', selected);
+    //     getFilterWorksListData(school, semester, selected);
+    //     setSelectedItems(selected);
+    // };
+    // console.log(selectedItems.length)
 
     return (
 
@@ -244,21 +257,18 @@ export default function WorksList({ school, semester }) {
                                 className="selectmultiple"
                                 mode="multiple"
                                 listHeight={130}
-                                // value={selectedItems}
                                 onChange={handleSelectChange}
                                 allowClear
                                 tagRender={tagRender}
-                                // defaultValue={['gold', 'cyan']}
                                 style={{
                                     width: "350px",
                                 }}
-                                disabled={
-                                    selectedItems.length >= 3
-                                        ? true
-                                        : false
-                                }
+                                // disabled={
+                                //     selectedItems.length >= 3
+                                //         ? true
+                                //         : false
+                                // }
                                 options={options}
-
                             />
                         </Space>
                     </div>
