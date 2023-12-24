@@ -808,19 +808,18 @@
 
  .page-ntue .pageBanner .topBar li.breadcrumb-item {
    color: #5F8575;
-   margin-top: 50px;
+   
 
  }
 
  .page-ntut .pageBanner .topBar li.breadcrumb-item {
    color: #F2BF8C;
-   margin-top: 50px;
 
  }
 
  .pageBanner ol.breadcrumb {
-   padding-top: 10px;
-
+   
+   margin-top: 60px;
  }
 
  .page-ntue .pageBanner a {
@@ -856,14 +855,14 @@
  }
 
  /* antd dropdown */
- .page-ntut .dropdown {
+ .page-ntut .rightBar .dropdown {
   margin-top: 46px;
   margin-right: 25px;
   color: #F2BF8C;
   font-size: 14px;
 }
 
-.page-ntue .dropdown {
+.page-ntue .rightBar .dropdown {
   margin-top: 46px;
   margin-right: 25px;
   color: #5F8575;
@@ -1331,3 +1330,27 @@
      height: 220px;
    }
  }
+
+ /* @media(max-width:732px) {
+  .pageBanner .container .topBar ol.breadcrumb {
+    height: 10px;
+    width: 100px;
+    margin-top:50px;
+  }
+  .pageBanner .container .topBar ol.breadcrumb li.breadcrumb-item{
+    font-size: 12px;
+  }
+  .pageBanner .container .topBar .rightBar .dropdown{
+    height: 50px;
+    width: 60px;
+    margin-left: 50px;
+   
+    
+  }
+  .pageBanner .container .topBar .rightBar .select{
+    height: auto;
+    width: auto;
+    margin-left: 50px;
+    
+  }
+} */
