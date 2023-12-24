@@ -1,7 +1,7 @@
 # 終端指令：docker compose up
 # popo47112/ntue_and_ntue_v2:0.5
 
-version: '3.12' #指定docker compose的版本
+version: '3.8' #指定docker compose的版本
 
 
 services: #這邊宣告所有需要被建立的docker名稱與內容

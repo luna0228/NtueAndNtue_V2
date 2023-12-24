@@ -7,7 +7,7 @@
 
 .nav ul {
   width: 150px;
-  background-color: #FBFBFB;
+  background-color: #FFFFFF;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-column-gap: 1px;
@@ -58,7 +58,7 @@
   border-radius: 57px;
   z-index: 0;
   color: #B5B9B7;
-  background-color: #FBFBFB;
+  background-color: white;
 }
 
 .nav .a_active_green {
