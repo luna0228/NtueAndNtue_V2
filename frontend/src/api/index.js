@@ -51,7 +51,7 @@ export const filterWorksListBySkillmultiple = async (school, semester, skill1, s
    }
 }
 
-//如果API有更動演算策略，將上面handleSelectChange更簡約的GPT奇妙寫法
+//應用query與map製作的GPT奇妙寫法
 // export const filterWorksListBySkillmultiple = async (school, semester, skills) => {
 //    try {
 //        let query = skills.filter(skill => skill != null).map((skill, index) => `skill${index + 1}=${skill}`).join('&');

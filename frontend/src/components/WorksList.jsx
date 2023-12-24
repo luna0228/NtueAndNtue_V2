@@ -193,7 +193,7 @@ export default function WorksList({ school, semester }) {
         setSelectedItems(selected);
     };        
 
-    //如果API有更動演算策略，將上面handleSelectChange更簡約的GPT奇妙寫法
+    //如果filterWorksListBySkillmultiple API有更動演算策略，將上面handleSelectChange更簡約的GPT奇妙寫法
     // const handleSelectChange = (selected) => {
     //     if (selected.length > 3) {
     //         message.warning("系統只會篩選前三個選項",2.5);
