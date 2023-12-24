@@ -88,61 +88,32 @@ export default function WorksList({ school, semester }) {
     ];
     //多選TAG
     const options = [
-        {
-            value: 'JavaScript',
-        },
-        {
-            value: 'HTML',
-        },
-        {
-            value: 'CSS',
-        },
-        {
-            value: 'Bootstrap',
-        },
-        {
-            value: 'RWD',
-        }
-        ,
-        {
-            value: 'jQuery',
-        }
-        ,
-        {
-            value: 'Git版控',
-        }
-        ,
-        {
-            value: 'Firebase',
-        }
-        ,
-        {
-            value: 'Lottie',
-        }
-        ,
-        {
-            value: 'GASP',
-        }
-        ,
-        {
-            value: 'animate.css',
-        }
-        ,
-        {
-            value: 'wow.js',
-        }
-        ,
-        {
-            value: 'slick.js',
-        }
-        ,
-        {
-            value: 'SCSS',
-        }
-        ,
-        {
-            value: 'SCSS(Scout-App)',
-        }
+        { value: 'HTML' },
+        { value: 'CSS' },
+        { value: 'JavaScript' },
+        { value: 'Typescript' },
+        { value: 'Bootstrap' },
+        { value: 'RWD' },
+        { value: 'PHP' },
+        { value: 'MySQL' },
+        { value: 'jQuery' },
+        { value: 'Git版控' },
+        { value: 'React' },
+        { value: 'Firebase' },
+        { value: 'Lottie' },
+        { value: 'GASP' },
+        { value: 'SCSS' },
+        { value: 'animate.css' },
+        { value: 'normalize.css' },
+        { value: 'album.js' },
+        { value: 'aos.js' },
+        { value: 'login.js' },
+        { value: 'masonry.js' },
+        { value: 'ScrollTrigger.min.js' },
+        { value: 'slick.js' },
+        { value: 'wow.js' },
+        { vaule: 'ASP.NET' },
+
     ];
 
     const tagRender = (props) => {
