@@ -39,19 +39,21 @@ export const filterWorksListBySkill = async (skill_filter) => {
       console.log(err);
    }
 }
-<<<<<<< HEAD
-
-//for 點擊數
-export const updateClkCnt = async (id) => {
-   try {
-      const response = await axios.put(`${url}/update/clkcnt/${id}`);
-=======
 //filter多選
 export const filterWorksListBySkillmultiple = async (skill1, skill2, skill3) => {
    try {
       const response = await axios.get(`${url}/skill1?skill1=${skill1}/skill2?skill2=${skill2}/skill3?skill3=${skill3}`);
       //使用api：http://localhost:5001/worklist/skill_filter
->>>>>>> pagebanner1223
+      return response.data;
+   } catch (err) {
+      console.log(err);
+   }
+}
+
+//for 點擊數
+export const updateClkCnt = async (id) => {
+   try {
+      const response = await axios.put(`${url}/update/clkcnt/${id}`);
       return response.data;
    } catch (err) {
       console.log(err);
