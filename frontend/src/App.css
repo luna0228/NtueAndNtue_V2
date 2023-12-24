@@ -760,13 +760,13 @@
    padding-top: 20px;
  }
 
- .pageBanner .rightBar {
+  .rightBar {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   
 }
 
- .pageBanner .topBar .select{
+ .rightBar .select{
   display: flex;
   justify-content: space-between;
   width: 100px;
@@ -775,17 +775,17 @@
 }
 
 
-.pageBanner .topBar .select .selectmultiple .ant-select-selector{
+.rightBar .select .selectmultiple .ant-select-selector{
   border-color: #BDBDBD;
 }
 
-.page-ntue .pageBanner .topBar .select .selectmultiple:hover .ant-select-selector{
+.page-ntue .rightBar .select .selectmultiple:hover .ant-select-selector{
   border-color: #ACD2BF;
 }
-.page-ntut .pageBanner .topBar .select .selectmultiple:hover .ant-select-selector{
+.page-ntut .rightBar .select .selectmultiple:hover .ant-select-selector{
   border-color: #F2BF8C;
 }
-.page-ntue .pageBanner .topBar .select .selectmultiple:active :hover {
+.page-ntue .rightBar .select .selectmultiple:active :hover {
   border-color: #ACD2BF;
 }
 .page-ntut .pageBanner .topBar .select .selectmultiple:active :hover {
@@ -870,23 +870,23 @@
 }
 
 
- .page-ntut .dropdown .dropdownbutton {
+ .page-ntut .rightBar .dropdown .dropdownbutton {
   border-color:#F2BF8C;
    color: #F2BF8C;
  }
 
- .page-ntut .dropdown .dropdownbutton:hover {
+ .page-ntut .rightBar .dropdown .dropdownbutton:hover {
   background-color: transparent;
   border-color: #BDBDBD;
   color: #F2BF8C;
 }
 
- .page-ntue .dropdown .dropdownbutton:hover {
+ .page-ntue .rightBar .dropdown .dropdownbutton:hover {
    background-color: transparent;
    border-color: #BDBDBD;
    color: #5F8575;
  }
- .page-ntue .dropdown .dropdownbutton {
+ .page-ntue .rightBar .dropdown .dropdownbutton {
   border-color:#ACD2BF;
   color: #5F8575;
 }

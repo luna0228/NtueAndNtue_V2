@@ -189,7 +189,7 @@ const [selectedItems, setSelectedItems] = useState([]);
 
                         </ol>
 
-                        <div className="rightBar">
+                        {/* <div className="rightBar">
 
                             <div className="dropdown">
                                 <Dropdown
@@ -233,7 +233,7 @@ const [selectedItems, setSelectedItems] = useState([]);
                                     />
                                 </Space>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                     {/* <a className="btn dropdown-toggle text-wrap" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
                             分類
